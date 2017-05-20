@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Wizard Colmena</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="public/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700' rel='stylesheet' type='text/css'>
+    <!-- Theme CSS -->
+    <link href="public/css/agency.css" rel="stylesheet">
+    <link href="public/css/colorPickerStyle.css" rel="stylesheet">
+    <link href="public/css/styleWidget.css" rel="stylesheet">
+    <link href="public/css/styleWizard.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+<h2 style="text-align: center; margin-bottom: 20px"> Personalizaci&oacute;n del Widget </h2>
+<div class="container">
+    <form role="form">
+        <div>
+            <!-- Company -->
+            <div class="col-md-6" class="form-group" style="margin-bottom: 15px">
+                <label for="sel1">Empresa:</label>
+                <input type="text" class="form-control" id="companyCol">
+            </div>
+            <!-- Email -->
+            <div class="col-md-6" class="form-group" style="margin-bottom: 15px">
+                <label for="sel1">E-mail de contacto:</label>
+                <input type="text" class="form-control" id="emailCol">
+            </div>
+            <!-- Project selection -->
+            <div class="col-md-6" class="form-group" style="margin-bottom: 15px">
+                <label for="sel1">Proyecto:</label>
+                <select class="form-control" id="proyectPickerCol" onchange="cambiarProyecto(this.value)">
+                    <option value="0">Tecnologia Libre de Conflicto</option>
+                    <option value="1">Mujeres Valientes</option>
+                </select>
+            </div>
+            <!-- Donation Options -->
+            <div class="col-md-6" class="form-group" style="margin-bottom: 15px">
+                <label for="sel1">Opciones de donaci&oacute;n:</label>
+                <select class="form-control" id="opcion" onchange="cambiarOpcionDon(this.value)">
+                    <option value="0">Fijo</option>
+                    <option value="1">Variable</option>
+                </select>
+            </div>
+            <!-- Background Options -->
+            <div class="col-md-6" style="padding-left: 15px; padding-right: 15px; margin-bottom: 15px;">
+                <label for="titulo">Fondo del Widget:</label>
+                <select class="form-control" id="fondo" onchange="cambiarFondo(this.value)">
+                    <option value="0">Foto</option>
+                    <option value="1">Color</option>
+                </select>
+            </div>
+            <!-- Background Color -->
+            <div id="primDiv" class="col-md-3" style="margin-bottom: 15px;">
+                <label>Color de fondo:</label>
+                <div id="cp8Fondo" data-format="alias" class="input-group colorpicker-component cp8">
+                    <input id="colorPickerCol" type="text" value="000000" class="form-control" onchange="cambiarColor()" style="left: 0; margin: 0px; width: 100%" disabled /> <span class="input-group-addon"><i></i></span> </div>
+            </div>
+            <!-- Letter Color -->
+            <div class="col-md-3 ">
+                <label>Color de letra:</label>
+                <div id="cp8Letra" data-format="alias" class="input-group colorpicker-component cp8">
+                    <input id="colorFontCol" type="text" value="ffffff" class="form-control" onchange="cambiarLetra()" style="left: 0; margin: 0px; width: 100%" /> <span class="input-group-addon"><i></i></span> </div>
+            </div>
+        </div>
+</div>
+<h2 style="text-align: center">Resultado: <p>(Nota: El widget es responsive, prueba a cambiar el tamaño de la ventana)</p></h2>
+<!-- Result of the Widget -->
+<div id="colmenaDiv" style="">
+    <div id="colmenaText">
+        <p id="descripcionColmena">Apoya al proyecto&nbsp;<strong>Tecnologia libre de conflicto</strong> con el que se pretende conseguir una vida digna para las mujeres v&iacute;ctimas de violencia sexual y para aquellas en riesgo de sufrirla en R.D. Congo.</p>
+        <div class="hidden" data-toggle="buttons" id="variableDon">
+            <div class="select-style">
+                <select onclick="cambiarCantidad(this.value)">
+                    <option value="0">0€</option>
+                    <option value="1">1€</option>
+                    <option value="3">3€</option>
+                    <option value="5">5€</option>
+                </select>
+            </div>
+        </div>
+        <div id="fijoDon">
+            <input class="tgl tgl-flip" id="cb5" type="checkbox" />
+            <label class="tgl-btn" data-tg-off="No" data-tg-on="Apoyar" for="cb5" onclick="cambiarCantidad(100)"></label>
+        </div>
+    </div>
+    <div id="colmenaCantidad" class="unicoCol">0€</div>
+</div>
+<br>
+<div id="buttonCol">
+    <button type="button" class="btn btn-lg" data-dismiss="modal" onclick="sendData()" > Enviar <i class="glyphicon glyphicon-send"></i></button>
+</div>
+</form>
+</body>
+
+<!-- jQuery -->
+<script src="public/vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="public/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<!-- Contact Form JavaScript -->
+<script src="public/js/jqBootstrapValidation.js"></script>
+<!-- Theme JavaScript -->
+<script src="public/js/agency.min.js"></script>
+<!-- Colorpicker js -->
+<script src="public/js/bootstrap-colorpicker.min.js"></script>
+<!-- Custom js -->
+<script src="public/js/widget.js"></script>
+</html>
