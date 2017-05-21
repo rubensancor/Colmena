@@ -3,21 +3,21 @@
 from random import randint
 from pymongo import MongoClient
 client = MongoClient('mongodb://localhost:27017/colmena')
-db = client.bartolo
-collection = db.pussy
+db = client.colmena
+collection = db.donaciones
 
 
-for x in range(0, 10):
-    ano = randint(2015, 2017)
-    mes = randint(1,12)
-    dia = randint(1,31)
+for x in range(0, 3):
+    anyo = 2017
+    mes = 12
+    dia = 2
     collection.insert({
         "importe" : "1",
         "usada": "false",
         "fecha": {
-            "anyo": ano,
-            "mes": mes,
-            "dia": dia
+            "anyo": anyo,
+            "mes": "%02d" % (mes),
+            "dia": "%02d" % (dia)
         },
         "idDonacion": x
     })

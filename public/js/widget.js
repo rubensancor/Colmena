@@ -193,7 +193,7 @@ function createScript(empresa, email, proyecto, donacion, fondo, colorFondo, col
     var jsonReady = JSON.stringify(json);
         $.ajax({
         type: "POST",
-        url: "http://10.45.1.60:3000/autosave",
+        url: "http://192.168.1.34:3000/autosave",
         //url: "http://192.168.0.77:3000/json",
         data: jsonReady ,
         success: function( success ){
