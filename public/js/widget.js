@@ -197,7 +197,7 @@ function createScript(empresa, email, proyecto, donacion, fondo, colorFondo, col
         //url: "http://192.168.0.77:3000/json",
         data: jsonReady ,
         success: function( success ){
-          if(!success) alert("Already exists!");
+          if(!success) alert("Ese nombre ya existe");
         },
         dataType: "json",
         contentType: "application/json"

@@ -177,7 +177,7 @@ router.post('/form2', function(req, res) {
 
 });
 
-/* Test method fot statistics, given a year and a month retrieves the donations in that period */
+/* Test method for statistics, given a year and a month retrieves the donations in that period */
 router.get('/date/:year/:month', function(req, res) {
     var thisMonth = parseInt(req.params.month);
     var nextMonth = thisMonth;
@@ -201,7 +201,7 @@ router.get('/date/:year/:month', function(req, res) {
     });
 });
 
-/* Test method fot statistics, given a year and a month retrieves the donations in that period */
+/* Wizard for the companies */
 router.get('/creacion-wizard', function(req, res) {
     res.render('wizard');
 });
@@ -249,7 +249,7 @@ router.post('/autosave', function(req, res) {
                     return console.log(err);
                 }
 
-                console.log("The file was saved!");
+                console.log("El archivo fue guardado con el nombre " + title);
             });
             res.status(200);
         }
