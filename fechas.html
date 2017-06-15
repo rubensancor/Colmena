@@ -10,8 +10,10 @@ var width = 960,
 var formatPercent = d3.format(".1%");
 
 var color = d3.scaleQuantize()
-    .domain([0, 100])
-    .range(["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"]);
+    .domain([0, 10])
+    //.range(["#a50026", "#d73027", "#f46d43", "#fdae61", "#fee08b", "#ffffbf", "#d9ef8b", "#a6d96a", "#66bd63", "#1a9850", "#006837"]);
+    .range(["#DCEDC8", "#C5E1A5", "#AED581", "#9CCC65", "#8BC34A", "#7CB342", "#689F38", "#558B2F", "#33691E"]);
+    //.range(["#13BF00", "#38C200", "#5EC600", "#86CA00", "#AFCE00", "#D2CA00", "#D5A600", "#D98100", "#DD5A00", "#E13100", "#E50700"]);
 
 var svg = d3.select("body")
   .selectAll("svg")

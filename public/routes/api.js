@@ -23,6 +23,11 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
+/* Get map page */
+router.get('/mapa', function(req, res) {
+  res.render('mapa');
+});
+
 /**  Method to execute when posting to /form
  *   Searches for a donation given the id and returns a json if found one
  */
@@ -204,7 +209,26 @@ router.get('/date/:year/:month', function(req, res) {
 /* Method to get all the donations with date formated */
 router.get('/date/statistics', function(req, res) {
 
-  db.donaciones.find({}, function(err, donaciones) {
+  db.donaciones.aggregate({$group : { _id : '$fecha', count : {$sum : 1}}}, function(err,donac){
+    if (err) {
+      res.send(err);
+    } else {
+      var dates = [];
+      donac.forEach(function(obj) {
+        var date = obj._id.anyo + "-" + obj._id.mes + "-" + obj._id.dia;
+        date1 = {
+          "date": date,
+          "open": obj.count
+        };
+        dates.push(date1);
+      });
+      res.json(dates);
+    }
+  });
+
+
+
+/*  db.donaciones.find({}, function(err, donaciones) {
     if (err) {
       res.send(err);
     } else {
@@ -220,8 +244,20 @@ router.get('/date/statistics', function(req, res) {
       });
       res.json(dates);
     }
+  }); */
+});
+
+router.get('/statistics/mapa', function(req, res) {
+  db.donaciones.aggregate({$group : { _id : '$provincia', count : {$sum : 1}}}, function(err,donac){
+    if (err) {
+      res.send(err);
+    } else {
+        console.log(donac);
+      }
+      res.json(donac);
   });
 });
+
 
 /* Wizard for the companies */
 router.get('/creacion-wizard', function(req, res) {
